@@ -1,0 +1,36 @@
++complexo
+function gerarSubconjuntos(S) {
+    // Caso base: se o conjunto está vazio, retorna um subconjunto vazio
+    if (S.length === 0) {
+        return [[]];
+    } else {
+        // Gerar subconjuntos do conjunto sem o primeiro elemento
+        const subconjuntosMenores = gerarSubconjuntos(S.slice(1));
+
+        // Combinar subconjuntos anteriores com o primeiro elemento do conjunto
+        const novosSubconjuntos = subconjuntosMenores.map(subconjunto => [S[0], ...subconjunto]);
+
+        // Retornar a união dos subconjuntos anteriores com os novos subconjuntos
+        return subconjuntosMenores.concat(novosSubconjuntos);
+    }
+}
+
+// Testando a função gerarSubconjuntos
+console.log(gerarSubconjuntos([1, 2, 3, 4,]));
+// Output: [ [], [ 3 ], [ 2 ], [ 2, 3 ], [ 1 ], [ 1, 3 ], [ 1, 2 ], [ 1, 2, 3 ] ]
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+menos complexo
+
+function fatorial(n) {
+    // Caso base: fatorial de 0 ou 1 é 1
+    if (n === 0 || n === 1) {
+        return 1;
+    } else {
+        // Caso recursivo: n * fatorial(n - 1)
+        return n*fatorial(n - 1);
+    }
+}
+
+// Testando a função fatorial
+console.log(fatorial(5));  // Output: 120
